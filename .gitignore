@@ -1,0 +1,18 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Package Management #
+######################
+node_modules/
+npm-debug.log
+
+# Project Files #
+######################
+.serverless

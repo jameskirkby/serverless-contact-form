@@ -1,0 +1,14 @@
+{
+  "name": "serverless-contact-form",
+  "version": "1.0.0",
+  "description": "serverless contact form",
+  "main": "handler.js",
+  "scripts": {
+    "test": "serverless invoke local --function sendForm  --path event.json"
+  },
+  "author": "James Kirkby <james@breaksagency.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.7.3"
+  }
+}
