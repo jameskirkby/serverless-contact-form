@@ -28,14 +28,21 @@ module.exports.processFormData = (event, context, callback) => {
   // log the incoming data
   console.log('Received event:', JSON.stringify(event, null, 2));
 
+  // check if form data has actually been sent
   if(event.body.trim() === '') {
+
     callback(null, {
       statusCode: 500,
       body: 'Form data not sent'
     });
+
     return;
+
   } else {
+
+    // convert form fields to an object
     event.body = QueryStringToObj(event.body);
+
   }
 
   // log form data object
@@ -43,20 +50,26 @@ module.exports.processFormData = (event, context, callback) => {
 
   // Check that the name has been sent, and that the name isn't empty
   if (! event.body.name || event.body.name.trim() === '') {
+
     callback(null, {
       statusCode: 500,
       body: 'Name is required.'
     });
+
     return;
+
   }
 
   // check that the email has been sent
   if (! event.body.email) {
+
     callback(null, {
       statusCode: 500,
       body: 'Email address is required.'
     });
+
     return;
+
   }
 
   // setup an email regex
@@ -64,29 +77,38 @@ module.exports.processFormData = (event, context, callback) => {
 
   // check the submitted email is valid
   if (! email_regex.test(event.body.email)) {
+
     callback(null, {
       statusCode: 500,
       body: 'The email not valid'
     });
+
     return;
+
   }
 
   // check the message has been sent, and that it's not empty
   if (! event.body.message || event.body.message.trim() === '') {
+
     callback(null, {
       statusCode: 500,
       body: 'Message is required.'
     });
+
     return;
+
   }
 
   // basic spam check
   if (event.body.message.indexOf('<a') !== -1) {
+
     callback(null, {
       statusCode: 500,
       body: 'Spam detected.'
     });
+
     return;
+
   }
 
   // Put together all info needed to send the email
@@ -100,7 +122,7 @@ module.exports.processFormData = (event, context, callback) => {
   ses.sendEmail({
     Destination: {
       ToAddresses: [
-        'James Kirkby <james@breaksagency.com>'
+        'YOUR NAME <your_email@domain.com>'
       ]
     },
     Message: {
@@ -115,20 +137,22 @@ module.exports.processFormData = (event, context, callback) => {
         Charset: 'UTF-8'
       }
     },
-    Source: "Contact Form <james@breaksagency.com>",
+    Source: "Contact Form <your_email@domain.com>",
     ReplyToAddresses: [
       replyTo
     ]
   }, (err, data) => {
+
     if (err) {
       // email was not sent
+      console.log('Error Sending Email:' JSON.stringify(err, null, 2));
+
       callback(null, {
         statusCode: 500,
         body: 'Message could not be sent'
       });
 
     } else {
-      // email was sent successfully
 
       if(event.body.redirectUrl) {
         // if a redirect URL has been passed, redirect to that URL
@@ -137,14 +161,20 @@ module.exports.processFormData = (event, context, callback) => {
           headers: {
             'Location': event.body.redirectUrl
           }
+
         });
+
       } else {
+
         callback(null, {
           statusCode: 200,
           body: 'success'
         });
+
       }
+
     }
+
   });
 
 };

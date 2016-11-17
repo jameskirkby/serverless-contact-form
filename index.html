@@ -2,14 +2,24 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>title</title>
+        <title>Serverless Contact Form</title>
     </head>
     <body>
-        <form action="https://ypnngzig15.execute-api.eu-west-1.amazonaws.com/prod/contact" method="POST">
-            <input type="text" name="name" value="Example Name" />
-            <input type="text" name="email" value="example@example.com" />
-            <textarea name="message">Example Message</textarea>
-            <input type="submit" value="Send" />
+        <h1>Serverless Contact Form</h1>
+        <form action="<API GATEWAY URL HERE>" method="POST">
+            <!--<input type="hidden" name="redirectUrl" value="https://serverless.com" />-->
+            <div>
+                <input type="text" name="name" value="Example Name" />
+            </div>
+            <div>
+                <input type="text" name="email" value="example@example.com" />
+            </div>
+            <div>
+                <textarea name="message">Example Message</textarea>
+            </div>
+            <div>
+                <input type="submit" value="Send" />
+            </div>
         </form>
     </body>
 </html>
