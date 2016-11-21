@@ -145,7 +145,7 @@ module.exports.processFormData = (event, context, callback) => {
 
     if (err) {
       // email was not sent
-      console.log('Error Sending Email:' JSON.stringify(err, null, 2));
+      console.log('Error Sending Email:', JSON.stringify(err, null, 2));
 
       callback(null, {
         statusCode: 500,
