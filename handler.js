@@ -29,7 +29,7 @@ module.exports.processFormData = (event, context, callback) => {
   console.log('Received event:', JSON.stringify(event, null, 2));
 
   // check if form data has actually been sent
-  if(! event.body.name || event.body.trim() === '') {
+  if(! event.body || event.body.trim() === '') {
 
     callback(null, {
       statusCode: 500,
