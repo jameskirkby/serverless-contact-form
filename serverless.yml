@@ -15,7 +15,7 @@ service: contact-form
 
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs6.10
   stage: prod
   region: eu-west-1
   iamRoleStatements:
