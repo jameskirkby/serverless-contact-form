@@ -6,9 +6,9 @@ You will need:
 
 * An AWS account
 * An IAM account with privileges to send emails using SES
-* An email address that's been verified in SES. This is the email you'll be sending your emails to
-* The AWS SDK installed on your local machine, configured to your IAM credentials
-* serverless installed on your local machine
+* An email address that's been [verified in SES](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html). This is the email you'll be sending your emails to
+* The [AWS CLI](https://aws.amazon.com/cli/) installed on your local machine, configured to your IAM credentials
+* [serverless](https://serverless.com/) installed on your local machine
 
 ## Installation
 1. Clone this repository to your local machine, and change to that directory
