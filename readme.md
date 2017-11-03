@@ -17,4 +17,4 @@ You will need:
 4. Run `serverless deploy` to upload to AWS Lambda
 5. You can test the function through Lambda by running `serverless invoke --function sendForm  --path event.json`. This will run the function using the data in `event.json`
 6. A very basic contact form is included in the repository, `index.html`, replace `API_GATEWAY_URL` with the gateway URL that serverless displays in the console after you've deployed it. You can use this to test that the form works from a webpage. Uncomment the `redirectUrl` field if you want to redirect to another URL after a successful form submission.
-7. You should be able to see the results of each form submission in **AWS CloudWatch > Log Groups > /aws/lambda/contact-form-prod-sendForm**
+7. You should be able to see the results of each form submission in **AWS CloudWatch > Log Groups > /aws/lambda/contact-form-prod-sendForm** (when you're in the AWS Console, make sure you're in the same region that you set in serverless.yml, otherwise the logs may not show up in CloudWatch)
